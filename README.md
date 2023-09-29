@@ -1,4 +1,4 @@
-# VenueInfoHelper
+# VenueInfoHandler
 API/CGI for Venue Information notification on Public Wi-Fi to help users reach out to the web portal at the venue.
 
 This helper is specialized for Venue Information display rather than Captive Portal that blocks the network usage. There is no access control at all. Our intention is to improve user engagement while allowing people to use the network continuously and seamlessly.
@@ -25,3 +25,5 @@ This helper is specialized for Venue Information display rather than Captive Por
 - https://example.net/cp/ -- CAPPORT API (SSL is mandatory)
 - http://\<local IP address\>/ -- Diverted destination for Apple's legacy captive portal mechanism. (No-SSL)
 
+## Deployment
+- (to be added)
