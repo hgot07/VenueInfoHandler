@@ -11,10 +11,11 @@ This helper is specialized for Venue Information display rather than Captive Por
 ## Requirements
 - Redis
 - Perl
-- HTTP server
-- DNS server
+- (Local) HTTP server with a server certificate from a pupular CA
+- Local DNS server
+- DHCP server
 
 ## Limitations
 - (Disturbing) Captive Portal is enforced on Apple devices since they haven't got a nice notification mechanism.
 - No support for Windows 10/11 so far.
-
+- Not working well over NAPT. To overcome this, we will need a DHCP server that can attach some paramters like MAC address in order for the API to uniquely identify the user device behind a NAPT box.
