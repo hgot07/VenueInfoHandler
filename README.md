@@ -6,7 +6,7 @@ This helper is specialized for Venue Information display rather than Captive Por
 ## Specifications
 - CAPPORT API (RFC 8908, 8910) is the primary.
 - Support (partly) Apple's legacy Captive Portal mechanism (CNA, Captive Network Assistant).
-- Usable with Open, PSK, 802.1X, Passpoint.
+- Usable with Open, PSK, 802.1X, and Passpoint networks.
 
 ## Requirements
 - Redis
