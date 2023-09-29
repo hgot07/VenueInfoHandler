@@ -11,7 +11,7 @@ This helper is specialized for Venue Information display rather than Captive Por
 ## Requirements
 - Redis
 - Perl
-- (Local) HTTP server with a server certificate from a pupular CA
+- (Local) HTTP server with a server certificate issued by a pupular CA
 - Local DNS server
 - DHCP server
 
