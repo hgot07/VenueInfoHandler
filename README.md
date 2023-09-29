@@ -23,5 +23,5 @@ This helper is specialized for Venue Information display rather than Captive Por
 ## Website layout
 - https://example.com/ -- Portal site of the venue. (SSL is mandatory)
 - https://example.net/cp/ -- CAPPORT API (SSL is mandatory)
-- http://<local IP address>/ -- Diverted destination for Apple's legacy captive portal mechanism. (No-SSL)
+- http://\<local IP address\>/ -- Diverted destination for Apple's legacy captive portal mechanism. (No-SSL)
 
