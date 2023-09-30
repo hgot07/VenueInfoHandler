@@ -1,3 +1,6 @@
 Options +ExecCGI
-AddHandler cgi-script .cgi .html
-DirectoryIndex index.cgi
+AddHandler cgi-script .cgi
+DirectoryIndex index.html
+<FilesMatch "hotspot-detect.html">
+  SetHandler cgi-script
+</FilesMatch>

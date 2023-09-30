@@ -18,9 +18,9 @@ Please see also [Capport support status](OS-status.md).
 
 
 ## Specifications
-- Capport API (RFC 8908/8910) is the primary.
-- Support (partly) Apple's legacy Captive Portal mechanism (CNA, Captive Network Assistant).
+- Capport API (RFC 8908/8910) is the primary, while vendor-specific methods are optional.
 - Usable with Open, PSK, 802.1X, and Passpoint networks.
+- Support (partly) Apple's legacy Captive Portal mechanism (CNA, Captive Network Assistant).
 
 ## Requirements
 - Redis
@@ -31,7 +31,7 @@ Please see also [Capport support status](OS-status.md).
 
 ## Limitations
 - (Disturbing) Captive Portal is enforced on Apple devices since they haven't got a nice notification mechanism.
-- No support for Android 11 and older.
+- No support for Android 10 and older.
 - No support for Windows 10/11 so far.
 - Not working well over NAPT. To overcome this, we will need a DHCP server that can attach some paramters like MAC address in order for the API to uniquely identify the user device behind a NAPT box.
 
