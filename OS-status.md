@@ -15,10 +15,11 @@ CP works well. Notification with icon is available even when CP is disabled.
 - Android 10 and older: No support. (Vendor-specific CP only)
 
 ## iOS/iPadOS
-- iOS/iPadOS 17: Capport API (RFC 8908) is supported.
-- iOS/iPadOS 17: When CP is enabled, popup window appears. However, when CP is disabled, there is no notification. "Open Portal Page" link appears in the Wi-Fi setting menu.
+- iOS/iPadOS 16, 17: Capport API (RFC 8908) is supported.
+- iOS/iPadOS 17: When CP is enabled, popup window appears. When CP is disabled, there is no notification. "Open Portal Page" link appears in the Wi-Fi setting menu.
+- iOS/iPadOS 16: When CP is enabled, popup window appears. When CP is disabled, there is no notification nor Venue Info display.
 
-- iOS/iPadOS 16 and older: No support. (Vendor-specific CP only)
+- iOS/iPadOS 15 and older: No support. (Vendor-specific CP only)
 
 ## macOS
 - macOS 13 (Ventura) and newer: Capport API (RFC 8908) is supported.
