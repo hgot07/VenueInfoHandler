@@ -6,11 +6,11 @@ Test and investigation results are shown below. They might be different from ven
 
 ## Android
 - Android 11 and newer: Capport API (RFC 8908) is supported.
-- Android 12 (Pixel 3): CP works well. Notification with icon is available even when CP is disabled.
+- Android 12 (Pixel 3): CP works well. Notification with icon is available even when CP is disabled ("captive": false).
 - Android 13 (Pixel 7 and 7 Pro): CP works well. Notification with icon is available even when CP is disabled.
-
-- Android 11 (Galaxy A21): API is called, but CP does not work.
-- Android 12 (Galaxy A41): API is called, but CP does not work.
+- Android 11 (Galaxy A21): 
+CP works well. Notification with icon is available even when CP is disabled.
+- Android 12 (Galaxy A41): CP works well. Notification with icon is available even when CP is disabled.
 
 - Android 10 and older: No support. (Vendor-specific CP only)
 
@@ -25,4 +25,5 @@ Test and investigation results are shown below. They might be different from ven
 
 ## ChromeOS
 - (unknown)
+
 

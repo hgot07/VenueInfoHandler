@@ -8,7 +8,7 @@ This helper is specialized for Venue Information display rather than Captive Por
 Please see also [Capport support status](OS-status.md).
 
 ### Modern Capport (RFC 8908/8910)
-- Android 11+ (Pixel)
+- Android 11+
 - iOS/iPadOS 17+
 - macOS 13 (Ventura)+
 
