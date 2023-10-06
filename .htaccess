@@ -1,6 +1,15 @@
 Options +ExecCGI
-AddHandler cgi-script .cgi
-DirectoryIndex index.html
+AddHandler cgi-script .cgi .html
+DirectoryIndex index.cgi
 <FilesMatch "hotspot-detect.html">
+  SetHandler cgi-script
+</FilesMatch>
+<FilesMatch "generate_204">
+  SetHandler cgi-script
+</FilesMatch>
+<FilesMatch "connecttest.txt">
+  SetHandler cgi-script
+</FilesMatch>
+<FilesMatch "redirect">
   SetHandler cgi-script
 </FilesMatch>
