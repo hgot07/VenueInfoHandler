@@ -1,7 +1,7 @@
 # VenueInfoHandler
 API/CGI for Venue Information notification on Public Wi-Fi to help users reach out to the portal site at the venue.
 
-This helper is specialized for Venue Information display rather than Captive Portal that blocks the network usage. There is no access control at all. Our intention is to improve user engagement while allowing people to use the network continuously.
+This software is specialized for Venue Information display rather than Captive Portal that blocks the network usage. There is no access control at all. Main purpose is to improve user engagement while allowing people to use the network continuously.
 
 ## Supported platforms
 
@@ -9,11 +9,11 @@ Please see also [Capport support status](OS-status.md).
 
 ### Modern Capport (RFC 8908/8910)
 - Android 11+
-- iOS/iPadOS 17+
+- iOS/iPadOS 15+
 - macOS 13 (Ventura)+
 
-### Vendor-specific Captive Portal
-- iOS/iPadOS 16 and some older ones
+### Vendor-specific Captive Portal (planned)
+- iOS/iPadOS 14 and some older ones
 - macOS 12 (Montrerey) and some older ones
 
 
