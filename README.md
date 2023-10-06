@@ -1,4 +1,4 @@
-# VenueInfoHandler (experimental)
+# VenueInfoHandler
 API/CGI for Venue Information notification on Public Wi-Fi to help users reach out to the portal site at the venue.
 
 This helper is specialized for Venue Information display rather than Captive Portal that blocks the network usage. There is no access control at all. Our intention is to improve user engagement while allowing people to use the network continuously.
@@ -36,9 +36,9 @@ Please see also [Capport support status](OS-status.md).
 - Not working well over NAPT. To overcome this, we will need a DHCP server that can attach some paramters like MAC address in order for the API to uniquely identify the user device behind a NAPT box.
 
 ## Website layout
-- https://\<portal.example.com\>/ -- Portal site of the venue. (SSL is required)
-- https://\<example.net\>/cp/ -- Capport API (SSL is required)
-- http://\<local IP address\>/ -- Diverted destination for Apple's legacy captive portal mechanism. (No SSL)
+- https://\<portal.example.net\>/ -- Portal site of the venue. (SSL is required)
+- https://\<example.com\>/cp/ -- Capport API (SSL is required)
+- http://\<local IP address\>/ -- Diverted destination for vendor-specific legacy captive portal mechanisms. (No SSL)
 
 ## Configuration
 - Edit capport.cfg and index.cgi in cp/.
@@ -46,7 +46,7 @@ Please see also [Capport support status](OS-status.md).
 - Setup Apache HTTP server or an alternative.
 - Setup and run Redis server.
 - Setup local DNS and DHCP servers. [Dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) is a handy DNS/DHCP server for this purpose.
-- To enable Captive Portal API (Capport API) for Android 11+ and Apple devices, add an DHCP option 114 as follows (Dnsmasq case).
+- To enable Captive Portal API (Capport API) for Android 11+ and Apple devices, add DHCP option 114 as follows.
  - dhcp-option=114,https://example.com/cp/api.cgi&cp=0
 - To enable Splash Page on Android, set cp=1.
  - dhcp-option=114,https://example.com/cp/api.cgi&cp=1
