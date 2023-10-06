@@ -45,7 +45,9 @@ Please see also [Capport support status](OS-status.md).
 - Make sure all required modules exist. (Do perl -c api.cgi for example.)
 - Setup Apache HTTP server or alternative.
 - Setup Redis.
-- Setup local DNS server. Dnsmasq is a handy DNS server for overriding domain names.
+- Setup local DNS and DHCP servers. [Dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) is a handy DNS/DHCP server for this purpose.
 - To enable Captive Portal API (Capport API) for Android 11+ and Apple devices, add an DHCP option 114 as follows (Dnsmasq case).
--- dhsp-option~114,https://example.com/cp/api.cgi&cp=0
+ - dhcp-option~114,https://example.com/cp/api.cgi&cp=0
+- To enable Splash Page on Android, set cp=1.
+ - dhcp-option~114,https://example.com/cp/api.cgi&cp=1
 - (to be added)
