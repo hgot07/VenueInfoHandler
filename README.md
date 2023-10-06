@@ -43,11 +43,11 @@ Please see also [Capport support status](OS-status.md).
 ## Configuration
 - Edit capport.cfg and index.cgi in cp/.
 - Make sure all required modules exist. (Do perl -c api.cgi for example.)
-- Setup Apache HTTP server or alternative.
-- Setup Redis.
+- Setup Apache HTTP server or an alternative.
+- Setup and run Redis server.
 - Setup local DNS and DHCP servers. [Dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) is a handy DNS/DHCP server for this purpose.
 - To enable Captive Portal API (Capport API) for Android 11+ and Apple devices, add an DHCP option 114 as follows (Dnsmasq case).
- - dhcp-option~114,https://example.com/cp/api.cgi&cp=0
+ - dhcp-option=114,https://example.com/cp/api.cgi&cp=0
 - To enable Splash Page on Android, set cp=1.
- - dhcp-option~114,https://example.com/cp/api.cgi&cp=1
+ - dhcp-option=114,https://example.com/cp/api.cgi&cp=1
 - (to be added)
