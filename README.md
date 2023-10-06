@@ -40,5 +40,12 @@ Please see also [Capport support status](OS-status.md).
 - https://\<example.net\>/cp/ -- Capport API (SSL is required)
 - http://\<local IP address\>/ -- Diverted destination for Apple's legacy captive portal mechanism. (No SSL)
 
-## Deployment
+## Configuration
+- Edit capport.cfg and index.cgi in cp/.
+- Make sure all required modules exist. (Do perl -c api.cgi for example.)
+- Setup Apache HTTP server or alternative.
+- Setup Redis.
+- Setup local DNS server. Dnsmasq is a handy DNS server for overriding domain names.
+- To enable Captive Portal API (Capport API) for Android 11+ and Apple devices, add an DHCP option 114 as follows (Dnsmasq case).
+-- dhsp-option~114,https://example.com/cp/api.cgi&cp=0
 - (to be added)
