@@ -48,9 +48,9 @@ Please see also [Capport support status](OS-status.md).
 - Setup and run Redis server.
 - Setup local DNS and DHCP servers. [Dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) is a handy DNS/DHCP server for this purpose.
 - To enable Captive Portal API (Capport API) for Android 11+ and Apple devices, add DHCP option 114 as follows.
- - [Dnsmasq] dhcp-option=114,https://example.com/cp/api.cgi?cp=0
- - [ISC DHCP] option default-url "https://example.com/cp/api.cgi?cp=0"
+  - [Dnsmasq] dhcp-option=114,https://example.com/cp/api.cgi?cp=0
+  - [ISC DHCP] option default-url "https://example.com/cp/api.cgi?cp=0"
 - To enable Splash Page on Android, set cp=1.
- - [Dnsmasq] dhcp-option=114,https://example.com/cp/api.cgi?cp=1
- - [ISC DHCP] option default-url "https://example.com/cp/api.cgi?cp=1"
+  - [Dnsmasq] dhcp-option=114,https://example.com/cp/api.cgi?cp=1
+  - [ISC DHCP] option default-url "https://example.com/cp/api.cgi?cp=1"
 - (to be added)
