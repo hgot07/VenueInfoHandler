@@ -1,5 +1,5 @@
 Options +ExecCGI
-AddHandler cgi-script .cgi .html
+AddHandler cgi-script .cgi
 DirectoryIndex index.cgi
 <FilesMatch "hotspot-detect.html">
   SetHandler cgi-script
