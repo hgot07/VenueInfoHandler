@@ -1,7 +1,12 @@
 # VenueInfoHandler
 API/CGI for Venue Information notification on Public Wi-Fi to help users reach out to the portal site at the venue.
 
-This software is specialized for Venue Information display rather than Captive Portal that blocks the network usage. There is no access control at all. Main purpose is to improve user engagement while allowing people to use the network continuously.
+**This software is specialized for Venue Information notification rather than Captive Portal that blocks the network usage.** There is no access control at all. Main purpose is to improve user engagement while allowing people to use the network continuously.
+
+If you need Captive Portal with access control, this project is not for you. There are some nice products as follows.
+- [openNDS](https://github.com/openNDS/openNDS)
+- [CoovaChilli](https://coova.github.io/CoovaChilli/)
+
 
 ## Supported platforms
 
