@@ -7,7 +7,7 @@ This software is specialized for Venue Information display rather than Captive P
 
 Please see also [Capport support status](OS-status.md).
 
-### Modern Capport (RFC 8908/8910)
+### Modern Capport (RFC 8908/8910/8952)
 - Android 11+
 - iOS/iPadOS 15+
 - macOS 13 (Ventura)+
@@ -45,6 +45,7 @@ Please see also [Capport support status](OS-status.md).
 - Edit capport.cfg and index.cgi in cp/.
 - Make sure all required modules exist. (Do perl -c api.cgi for example.)
 - Setup Apache HTTP server or an alternative.
+ Note that the system doesn't work over NAT because the CGI scripts have to rely on REMOTE_ADDR to discriminate each user device.
 - Setup and run Redis server.
 - Setup local DNS and DHCP servers. [Dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) is a handy DNS/DHCP server for this purpose.
 - To enable Captive Portal API (Capport API) for Android 11+ and Apple devices, add DHCP option 114 as follows.
@@ -53,4 +54,8 @@ Please see also [Capport support status](OS-status.md).
 - To enable Splash Page on Android, set cp=1.
   - [Dnsmasq] dhcp-option=114,https://example.com/cp/api.cgi?cp=1
   - [ISC DHCP] option default-url "https://example.com/cp/api.cgi?cp=1"
+- To enable Google's legacy mechanism for ChromeOS, etc., override some domain names as follows.
+  - [Dnsmasq]  
+address=/www.gstatic.com/\<local HTTP server address\>  
+address=/connectivitycheck.gstatic.com/\<local HTTP server address\>
 - (to be added)

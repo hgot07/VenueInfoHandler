@@ -6,10 +6,11 @@
 #  Target: Android, macOS, iOS/iPadOS
 #
 # 20231007 Hideaki Goto (Cityroam/eduroam)
+# 20231015 Hideaki Goto (Cityroam/eduroam)
 #
 # Note:
-#  This CGI should be installed in the same network segment
-#  as the user devices. The system doesn't work over NAT.
+#  This CGI relys on REMOTE_ADDR to discriminate each user device.
+#  The system doesn't work over NAT.
 #
 
 
@@ -74,6 +75,12 @@ else{
 		$captive_mode = 'false';
 	}
 }
+
+# Block the Google's legacy mechanism.
+my $hmac_gblock = hmac_hex("$ENV{'REMOTE_ADDR'}", $hashkey, \&sha256);
+my $ukey_gblock = substr("$hmac_gblock", 0, 16);
+
+$redis->set('Gb-'.$ukey_gblock, '0', 'EX', $db_ttl_gblock);
 
 
 print <<EOS;

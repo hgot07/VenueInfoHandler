@@ -1,0 +1,59 @@
+#!/usr/bin/perl
+#
+# Venue Info Handler - Google's legacy Captive Portal
+#  API/CGI for Venue Information notification on Public Wi-Fi
+#  to help users reach out to the web portal at the venue.
+#  Target: ChromeOS
+#
+# 20231015 Hideaki Goto (Cityroam/eduroam)
+#
+# Note:
+#  This CGI relys on REMOTE_ADDR to discriminate each user device.
+#  The system doesn't work over NAT.
+#
+
+require './cp/capport.cfg';
+
+use CGI;
+use Redis;
+use Digest::SHA qw(sha1 sha224 sha256 sha384 sha512);
+use Digest::HMAC qw(hmac hmac_hex);
+
+my $redis = Redis->new(server => 'localhost:6379') or die;
+$redis->select($db_index);
+
+my $q = CGI->new();
+
+my $captive_mode = 'true';
+
+# Note: REMOTE_ADDR is the only clue for identifying the user device.
+my $hmac = hmac_hex("$ENV{'REMOTE_ADDR'}", $hashkey, \&sha256);
+my $ukey = 'Gb-'.substr("$hmac", 0, 16);
+
+# Block the Google's legacy mechanism.
+#  for modern devices supporting Capport API.
+if ( $redis->exists($ukey) ){
+	$captive_mode = 'false';
+}
+
+if ( $captive_mode eq 'false' ){
+print <<EOS;
+Status: 204 No Content
+
+EOS
+}
+else{
+print <<EOS;
+Content-Type: text/html
+
+<html>
+<head>
+<meta http-equiv="refresh" content="0;URL=$venue_url">
+</head>
+<body>
+</body>
+</html>
+EOS
+}
+
+1;
