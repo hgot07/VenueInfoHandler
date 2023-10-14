@@ -1,15 +1,18 @@
-Options +ExecCGI
-AddHandler cgi-script .cgi
+Options +ExecCGI +FollowSymLinks
+AddHandler cgi-script .cgi .html
 DirectoryIndex index.cgi
-<FilesMatch "hotspot-detect.html">
+<Files "*.cfg">
+  Require all denied
+</Files>
+<Files "hotspot-detect.html">
   SetHandler cgi-script
-</FilesMatch>
-<FilesMatch "generate_204">
+</Files>
+<Files "generate_204">
   SetHandler cgi-script
-</FilesMatch>
-<FilesMatch "connecttest.txt">
+</Files>
+<Files "connecttest.txt">
   SetHandler cgi-script
-</FilesMatch>
-<FilesMatch "redirect">
+</Files>
+<Files "redirect">
   SetHandler cgi-script
-</FilesMatch>
+</Files>

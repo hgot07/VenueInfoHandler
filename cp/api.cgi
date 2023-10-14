@@ -90,7 +90,9 @@ Content-Type: application/captive+json
 {
   "captive": $captive_mode,
   "user-portal-url": "$cp_url?accept=$ac&ukey=$ukey",
-  "venue-info-url": "$venue_url"
+  "venue-info-url": "$venue_url",
+  "seconds-remaining": 0,
+  "can-extend-session": true
 }
 EOS
 
