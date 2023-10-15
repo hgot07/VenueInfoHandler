@@ -72,3 +72,4 @@ cname=captive.apple.com,\<local HTTP server FQDN\>
   - [Dnsmasq]  
 address=/www.msftconnecttest.com/\<local HTTP server address\>  
 
+- **In a nutshell,** see [example-dnsmasq.conf](example-dnsmasq.conf) .
