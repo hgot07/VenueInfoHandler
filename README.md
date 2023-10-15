@@ -63,4 +63,8 @@ Please see also [Capport support status](OS-status.md).
   - [Dnsmasq]  
 address=/www.gstatic.com/\<local HTTP server address\>  
 address=/connectivitycheck.gstatic.com/\<local HTTP server address\>
+- To enable Apple's legacy mechanism for macOS and iOS/iPadOS, override some domain names as follows.
+  - [Dnsmasq]  
+address=/\<local HTTP server FQDN\>/\<local HTTP server address\>  
+cname=captive.apple.com,\<local HTTP server FQDN\>
 - (to be added)

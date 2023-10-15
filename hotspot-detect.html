@@ -1,0 +1,91 @@
+#!/usr/bin/perl
+#
+# Venue Info Handler - Apple's legacy Captive Portal
+#  API/CGI for Venue Information notification on Public Wi-Fi
+#  to help users reach out to the web portal at the venue.
+#  Target: macOS, iOS/iPadOS
+#
+# 20231015 Hideaki Goto (Cityroam/eduroam)
+#
+# Note:
+#  This CGI relys on REMOTE_ADDR to discriminate each user device.
+#  The system doesn't work over NAT.
+#
+
+require './cp/capport.cfg';
+
+use CGI;
+use Redis;
+use Digest::SHA qw(sha1 sha224 sha256 sha384 sha512);
+use Digest::HMAC qw(hmac hmac_hex);
+
+my $redis = Redis->new(server => 'localhost:6379') or die;
+$redis->select($db_index);
+
+my $q = CGI->new();
+
+# for debugging
+my $http_env='';
+foreach $var (sort(keys(%ENV))) {
+	$val = $ENV{$var};
+	$val =~ s|\n|\\n|g;
+	$val =~ s|"|\\"|g;
+	$http_env .= "${var}=\"${val}\"\n";
+}
+$redis->set('ENV', $http_env);
+
+my $hmac = hmac_hex("$ENV{'REMOTE_ADDR'}", $hashkey, \&sha256);
+my $ukey = substr("$hmac", 0, 16);
+
+my $captive_mode = 0;
+if ( ! $redis->exists($ukey) ){
+	$redis->set($ukey, '0', 'EX', $db_ttl, 'NX');
+	$captive_mode = 1;
+}
+
+$redis->set($ukey, '0', 'EX', $db_ttl_apple);
+
+
+if ( $captive_mode ){
+
+print <<EOS;
+Content-Type: text/html
+
+<html>
+<head></head>
+<body>
+<div style="text-align: center">
+<a href="$venue_url">
+<img alt="venue logo" src="$logo_file">
+</a>
+</div>
+<br><br>
+<div style="text-align: center">
+<font size="+2"><a href="$venue_url">Go to portal</a></font>
+</div>
+</body>
+</html>
+EOS
+
+}
+else{
+
+print <<EOS;
+Content-Type: text/html
+
+<HTML><HEAD><TITLE>Success</TITLE></HEAD><BODY>
+<div style="text-align: center">
+<a href="$venue_url">
+<img alt="venue logo" src="$logo_file">
+</a>
+</div>
+<br><br>
+<div style="text-align: center">
+<font size="+2"><a href="$venue_url">Go to portal</a></font>
+</div>
+</BODY></HTML>
+EOS
+
+}
+
+1;
