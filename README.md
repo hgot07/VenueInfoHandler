@@ -59,12 +59,15 @@ Please see also [Capport support status](OS-status.md).
 - To enable Splash Page on Android, set cp=1.
   - [Dnsmasq] dhcp-option=114,https://example.com/cp/api.cgi?cp=1
   - [ISC DHCP] option default-url "https://example.com/cp/api.cgi?cp=1"
-- To enable Google's legacy mechanism for ChromeOS, etc., override some domain names as follows.
+- To enable Google's legacy mechanism for ChromeOS, etc., override some host names as follows.
   - [Dnsmasq]  
 address=/www.gstatic.com/\<local HTTP server address\>  
 address=/connectivitycheck.gstatic.com/\<local HTTP server address\>
-- To enable Apple's legacy mechanism for macOS and iOS/iPadOS, override some domain names as follows.
+- To enable Apple's legacy mechanism for macOS and iOS/iPadOS, override a host name as follows.
   - [Dnsmasq]  
 address=/\<local HTTP server FQDN\>/\<local HTTP server address\>  
 cname=captive.apple.com,\<local HTTP server FQDN\>
-- (to be added)
+- To enable Microsoft's legacy mechanism for Windows 10/11, override a host name as follows.
+  - [Dnsmasq]  
+address=/www.msftconnecttest.com/\<local HTTP server address\>  
+

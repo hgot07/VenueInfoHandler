@@ -1,0 +1,59 @@
+#!/usr/bin/perl
+#
+# Venue Info Handler - Microsoft's legacy Captive Portal
+#  API/CGI for Venue Information notification on Public Wi-Fi
+#  to help users reach out to the web portal at the venue.
+#  Target: macOS, iOS/iPadOS
+#
+# 20231015 Hideaki Goto (Cityroam/eduroam)
+#
+# Note:
+#  This CGI relys on REMOTE_ADDR to discriminate each user device.
+#  The system doesn't work over NAT.
+#
+
+require './cp/capport.cfg';
+
+use CGI;
+use Redis;
+use Digest::SHA qw(sha1 sha224 sha256 sha384 sha512);
+use Digest::HMAC qw(hmac hmac_hex);
+
+my $redis = Redis->new(server => 'localhost:6379') or die;
+$redis->select($db_index);
+
+my $q = CGI->new();
+
+# for debugging
+my $http_env='';
+foreach $var (sort(keys(%ENV))) {
+	$val = $ENV{$var};
+	$val =~ s|\n|\\n|g;
+	$val =~ s|"|\\"|g;
+	$http_env .= "${var}=\"${val}\"\n";
+}
+$redis->set('ENV', $http_env);
+
+
+my $hmac = hmac_hex("$ENV{'REMOTE_ADDR'}", $hashkey, \&sha256);
+my $ukey = substr("$hmac", 0, 16);
+
+my $captive_mode = 0;
+if ( ! $redis->exists($ukey) ){	# first call
+	$captive_mode = 1;
+}
+
+# To suppress the "No Internet" status 
+# on the NCSI (Network Connectivity Status Indicator).
+$redis->set($ukey, '0', 'EX', $db_ttl_win);
+
+if ( $captive_mode ){
+	print "Content-Type: text/plain\n\n";
+	print "Redirect";
+}
+else{
+	print "Content-Type: text/plain\n\n";
+	print "Microsoft Connect Test";
+}
+
+1;
