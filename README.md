@@ -1,9 +1,10 @@
 # VenueInfoHandler
 API/CGI for Venue Information notification on Public Wi-Fi to help users reach out to the portal site at the venue.
 
-**This software is specialized for Venue Information notification rather than Captive Portal that blocks the network usage.** There is no access control at all. Main purpose is to improve user engagement while allowing people to use the network continuously.
+**This software is specialized for Venue Information notification rather than Captive Portal that blocks the network usage.** No access control is supported. The main purpose is to improve user engagement while allowing people to use the network continuously.
 
-If you need Captive Portal with access control, this project is not for you. There are some nice products as follows.
+When Captive Portal with access control is needed,
+these links would be useful.
 - [openNDS](https://github.com/openNDS/openNDS)
 - [CoovaChilli](https://coova.github.io/CoovaChilli/)
 
@@ -17,7 +18,7 @@ Please see also [Capport support status](OS-status.md).
 - iOS/iPadOS 15+
 - macOS 13 (Ventura)+
 
-### Vendor-specific Captive Portal (planned)
+### Vendor-specific Captive Portal
 - iOS/iPadOS 14 and some older ones
 - macOS 12 (Montrerey) and some older ones
 - Windows 10/11
@@ -26,7 +27,7 @@ Please see also [Capport support status](OS-status.md).
 ## Specifications
 - Capport API (RFC 8908/8910) is the primary, while vendor-specific methods are optional.
 - Usable with Open, PSK, 802.1X, and Passpoint networks.
-- Support (partly) Apple's legacy Captive Portal mechanism (CNA, Captive Network Assistant).
+- Support partly Apple's legacy Captive Portal mechanism (CNA, Captive Network Assistant).
 
 ## Requirements
 - Redis
@@ -36,10 +37,9 @@ Please see also [Capport support status](OS-status.md).
 - DHCP server
 
 ## Limitations
-- (Disturbing) Captive Portal is enforced on Apple devices since they haven't got a nice notification mechanism.
+- (Disturbing) Captive Portal is enforced on Apple OSs since they haven't got a nice notification mechanism.
 - No support for Android 10 and older.
-- No support for Windows 10/11 so far.
-- Not working well over NAPT. To overcome this, we will need a DHCP server that can attach some paramters like MAC address in order for the API to uniquely identify the user device behind a NAPT box.
+- Not working well over NAPT. To overcome this, we will need a DHCP server that can attach some paramters like MAC address in order for the API to uniquely identify the user device behind a NAPT box. There's no hope for the legacy methods.
 
 ## Website layout
 - https://\<portal.example.net\>/ -- Portal site of the venue. (SSL is required)
@@ -48,6 +48,7 @@ Please see also [Capport support status](OS-status.md).
 
 ## Configuration
 - Edit capport.cfg and index.cgi in cp/.
+- Edit hotspot-detect.html
 - Make sure all required modules exist. (Do perl -c api.cgi for example.)
 - Setup Apache HTTP server or an alternative.
  Note that the system doesn't work over NAT because the CGI scripts have to rely on REMOTE_ADDR to discriminate each user device.
