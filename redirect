@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+require './cp/capport.cfg';
+
+print <<EOS;
+Content-Type: text/html
+
+<html>
+<head>
+<meta http-equiv="refresh" content="0;URL=$venue_url">
+</head>
+<body>
+</body>
+</html>
+EOS
+
+1;
