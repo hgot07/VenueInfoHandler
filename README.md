@@ -57,6 +57,8 @@ Please see also [Capport support status](OS-status.md).
 - To enable Captive Portal API (Capport API) for Android 11+ and Apple devices, add DHCP option 114 as follows.
   - [Dnsmasq] dhcp-option=114,https://example.com/cp/api.cgi?cp=0
   - [ISC DHCP] option default-url "https://example.com/cp/api.cgi?cp=0"
+  
+![notification on Android](media/android-notification.png "")
 - To enable Splash Page on Android, set cp=1.
   - [Dnsmasq] dhcp-option=114,https://example.com/cp/api.cgi?cp=1
   - [ISC DHCP] option default-url "https://example.com/cp/api.cgi?cp=1"
@@ -64,10 +66,14 @@ Please see also [Capport support status](OS-status.md).
   - [Dnsmasq]  
 address=/www.gstatic.com/\<local HTTP server address\>  
 address=/connectivitycheck.gstatic.com/\<local HTTP server address\>
+  
+![notification on ChromeOS](media/chrome-wifi.png "")
 - To support Apple's legacy mechanism for macOS and iOS/iPadOS, override a host name as follows.
   - [Dnsmasq]  
 address=/\<local HTTP server FQDN\>/\<local HTTP server address\>  
 cname=captive.apple.com,\<local HTTP server FQDN\>
+  
+![CNA on macOS](media/macos-cna.png "")
 - To support Microsoft-specific mechanism for Windows 10/11, override a host name as follows.
   - [Dnsmasq]  
 address=/www.msftconnecttest.com/\<local HTTP server address\>  
