@@ -6,6 +6,9 @@
 #  Target: Android, macOS, iOS/iPadOS
 #
 # 20231007 Hideaki Goto (Cityroam/eduroam)
+# 20231015 Hideaki Goto (Cityroam/eduroam)
+# 20231228 Hideaki Goto (Cityroam/eduroam)
+#	Fixed HTML.
 #
 # Note:
 #  Customize the splash page contents in this file.
@@ -59,7 +62,7 @@ Content-Type: text/html
 <head></head>
 <body>
 <div style="text-align: center">
-<img alt="operator logo" src="logo.png">
+<img alt="venue logo" src="$logo_file">
 </div>
 <br><br>
 <div style="text-align: center">
@@ -82,7 +85,8 @@ Content-Type: text/html
 <body>
 <div style="text-align: center">
 <a href="$venue_url">
-<img alt="operator logo" src="logo.png">
+<img alt="venue logo" src="$logo_file">
+</a>
 </div>
 <br><br>
 <div style="text-align: center">
