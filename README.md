@@ -57,6 +57,10 @@ Please see also [Capport support status](OS-status.md).
 - To enable Captive Portal API (Capport API) for Android 11+ and Apple devices, add DHCP option 114 as follows.
   - [Dnsmasq] dhcp-option=114,https://example.com/cp/api.cgi?cp=0
   - [ISC DHCP] option default-url "https://example.com/cp/api.cgi?cp=0"
+  - [RouterOS]  
+/ip/dhcp-server/option/add code=114 name=venueinfo value="'https://example.com/cp/api.cgi?cp=0'"  
+/ip/dhcp-server/option/sets/add name=default options=venueinfo  
+/ip/dhcp-server/set \<num\> dhcp-option-set=default
   
 ![notification on Android](media/android-notification.png "")
 - To enable Splash Page on Android, set cp=1.
