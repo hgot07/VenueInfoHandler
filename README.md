@@ -54,11 +54,11 @@ Please see also [Capport support status](OS-status.md).
  Note that the system doesn't work over NAT because the CGI scripts have to rely on REMOTE_ADDR to discriminate each user device.
 - Setup and run Redis server.
 - Setup local DNS and DHCP servers. [Dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) is a handy DNS/DHCP server for this purpose.
-- To enable Captive Portal API (Capport API) for Android 11+ and Apple devices, add DHCP option 114 as follows.
-  - [Dnsmasq] dhcp-option=114,https://example.com/cp/api.cgi?cp=0
-  - [ISC DHCP] option default-url "https://example.com/cp/api.cgi?cp=0"
+- To enable Captive Portal API (Capport API) for Android 11+ and Apple devices, add DHCP option 114 as follows. Access Network ID (anid) may be omitted.
+  - [Dnsmasq] dhcp-option=114,https://example.com/cp/api.cgi?cp=0&anid=deadbeef
+  - [ISC DHCP] option default-url "https://example.com/cp/api.cgi?cp=0&anid=deadbeef"
   - [RouterOS]  
-/ip/dhcp-server/option/add code=114 name=venueinfo value="'https://example.com/cp/api.cgi?cp=0'"  
+/ip/dhcp-server/option/add code=114 name=venueinfo value="'https://example.com/cp/api.cgi?cp=0&anid=deadbeef'"  
 /ip/dhcp-server/option/sets/add name=default options=venueinfo  
 /ip/dhcp-server/set \<num\> dhcp-option-set=default
   
@@ -83,3 +83,12 @@ cname=captive.apple.com,\<local HTTP server FQDN\>
 address=/www.msftconnecttest.com/\<local HTTP server address\>  
 
 - **In a nutshell,** see [example-dnsmasq.conf](example-dnsmasq.conf) .
+
+
+## Passing the Access Network ID to the website (optional)
+Only the Captive Portal API supports this feature.
+
+The API passes transparently an optional parameter ``anid=\<string\>''
+in the DHCP configuration to the splash/portal page.
+This is useful for building a location-aware website.
+Service providers may define their own ID string.

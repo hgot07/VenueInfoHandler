@@ -7,6 +7,8 @@
 #
 # 20231007 Hideaki Goto (Cityroam/eduroam)
 # 20231015 Hideaki Goto (Cityroam/eduroam)
+# 20240103 Hideaki Goto (Cityroam/eduroam)
+#	Added support for Access Network ID.
 #
 # Note:
 #  This CGI relys on REMOTE_ADDR to discriminate each user device.
@@ -53,6 +55,12 @@ if ( defined $q->param('cp') ){
 	}
 }
 
+# Get Access Network ID
+my $anid = '';
+if ( defined $q->param('anid') ){
+	$anid = $q->param('anid');
+}
+
 my $ac = 0;	# 0: no auto click-through (for Android)
 
 # For macOS, iOS, iPadOS, enforce popup and auto click-through.
@@ -90,7 +98,7 @@ Content-Type: application/captive+json
 {
   "captive": $captive_mode,
   "user-portal-url": "$cp_url?accept=$ac&ukey=$ukey",
-  "venue-info-url": "$venue_url",
+  "venue-info-url": "$venue_url?anid=$anid",
   "seconds-remaining": 0,
   "can-extend-session": true
 }
